@@ -1,2 +1,222 @@
 # transitioning-portfolio
 Metamorphosis to Tech
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f1220;
+      --card: rgba(255, 255, 255, 0.08);
+      --accent: #7c7cff;
+      --text: #f5f6fa;
+      --muted: #b5b7d2;
+    }
+
+    body.light {
+  --bg: #f5f6fa;
+  --bg-gradient: radial-gradient(circle at top, #ffffff, #e6e8ff);
+  --card: rgba(0, 0, 0, 0.05);
+  --accent: #4f46e5;
+  --text: #111827;
+  --muted: #4b5563;
+}
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1a1f3c, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+}
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: fadeDown 1s ease forwards;
+    }
+
+    header p {
+      max-width: 600px;
+      color: var(--muted);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    section {
+      padding: 5rem 10%;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+
+    .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card a:hover {
+  letter-spacing: 1px;
+}
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<button class="theme-toggle">🌙 Transitioning from social work to Tech girlie</button>
+
+  <header>
+    <h1>Hi, I’m Sarah Haastrup 👋</h1>
+    <p>
+      A developer & aspiring technical project manager building modern, scalable digital experiences.
+      This is where my future projects will live. Welcome to my transition!
+    </p>
+  </header>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <!-- Project Card -->
+      <div class="card">
+        <h3>🚀 Future Project</h3>
+        <p>
+          A brief description of what this project will be about.
+          Tech stack, goals, and impact go here.
+        </p>
+        <a href="#">Coming Soon →</a>
+      </div>
+
+      <div class="card">
+        <h3>💡 Another Idea</h3>
+        <p>
+          This slot is ready for your next big idea.
+        </p>
+        <a href="#">Coming Soon →</a>
+      </div>
+
+      <div class="card">
+        <h3>🧠 Experiment</h3>
+        <p>
+          A place for learning projects, prototypes, or experiments.
+        </p>
+        <a href="#">Coming Soon →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Sarah Haastrup — Built with HTML, CSS & a whole lot of ambition ✨
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll(".card");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
